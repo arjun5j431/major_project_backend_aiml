@@ -203,10 +203,11 @@ def process_and_report(file_path):
 
     # 6. Scale features
     scaler = StandardScaler()
-    if X_arr.shape[0] > 0:
-        X_scaled = scaler.fit_transform(X_arr)
+    # X is a numpy array at this point (converted above). Use it for scaling.
+    if X.shape[0] > 0:
+        X_scaled = scaler.fit_transform(X)
     else:
-        X_scaled = X_arr
+        X_scaled = X
 
     # 7. Split counts
     total_samples = X_scaled.shape[0]
